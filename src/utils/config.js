@@ -1,0 +1,1 @@
+export const baseURL = 'https://issue-tracker-be.herokuapp.com';

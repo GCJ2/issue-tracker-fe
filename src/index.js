@@ -7,6 +7,7 @@ import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import {BrowserRouter as Router} from 'react-router-dom';
+import reducer from "./reducers/reducers";
 import * as serviceWorker from './serviceWorker';
 
 const enhancer = compose(
