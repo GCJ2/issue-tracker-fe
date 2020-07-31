@@ -1,4 +1,4 @@
-import axios from  'axios'
+import axios from 'axios'
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
@@ -11,7 +11,9 @@ export const getUsers = dispatch => {
   axios.get('https://issue-tracker-be.herokuapp.com/users')
     .then(res => {
       dispatch({type: FETCH_USERS_SUCCESS, payload: res.data})
-    })
+    }).catch(error => {
+    dispatch({type: FETCH_FAILURE, payload: error})
+  })
 };
 
 export const getIssues = dispatch => {
@@ -19,7 +21,9 @@ export const getIssues = dispatch => {
   axios.get('https://issue-tracker-be.herokuapp.com/issues')
     .then(res => {
       dispatch({type: FETCH_ISSUES_SUCCESS, payload: res.data})
-    })
+    }).catch(error => {
+    dispatch({type: FETCH_FAILURE, payload: error})
+  })
 };
 
 
@@ -28,5 +32,7 @@ export const getComments = dispatch => {
   axios.get('https://issue-tracker-be.herokuapp.com/comments')
     .then(res => {
       dispatch({type: FETCH_COMMENTS_SUCCESS, payload: res.data})
-    })
+    }).catch(error => {
+    dispatch({type: FETCH_FAILURE, payload: error})
+  })
 };
