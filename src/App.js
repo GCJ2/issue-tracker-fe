@@ -9,8 +9,6 @@ import {
   getComments,
   getIssueById
 } from "./actions";
-
-import './App.css';
 import LandingPage from "./components/LandingPage/LandingPage";
 import Register from "./components/Register/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
