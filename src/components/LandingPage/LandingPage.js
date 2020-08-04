@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Checkbox, Form, Header} from 'semantic-ui-react'
+// import '../../../assets/pexels-photo-235985.jpeg'
 import './LandingPage.scss'
 
 const LandingPage = () => {
