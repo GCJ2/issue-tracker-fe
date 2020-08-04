@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button, Checkbox, Form, Header} from 'semantic-ui-react'
-
+import './LandingPage.scss'
 
 const LandingPage = () => {
   return (
     <div className='main-view'>
       <div className='form-container'>
-        <Header as='h1'>Issue Tracker</Header>
+        <Header as='h1'>Issue Tracker Login</Header>
         <div className='form'>
           <Form>
             <Form.Field>
@@ -17,8 +17,12 @@ const LandingPage = () => {
               <label>Password</label>
               <input placeholder='Password'/>
             </Form.Field>
-            <Button type='submit'>Sign In</Button>
+            <Button className='submit-button' type='submit'>Sign In</Button>
           </Form>
+        </div>
+        <div className='bottom-content'>
+          <p>Create an account</p>
+          <p>View Demo</p>
         </div>
       </div>
     </div>

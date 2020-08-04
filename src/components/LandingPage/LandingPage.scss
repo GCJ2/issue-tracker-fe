@@ -1,0 +1,33 @@
+.main-view {
+  background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  height: 100vh;
+
+  .form-container {
+    //border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    width: 350px;
+    height: 400px;
+    padding: 30px;
+    margin: auto;
+    text-align: center;
+    vertical-align: center;
+    //margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    .submit-button {
+      background-color: #088be9;
+      color: white;
+      width: 288px;
+      margin: 5px 0 10px 0;
+    }
+
+    .bottom-content {
+      margin-top: 25px;
+    }
+  }
+}
