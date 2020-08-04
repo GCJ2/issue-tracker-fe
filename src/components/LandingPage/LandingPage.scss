@@ -8,7 +8,7 @@
     background-color: white;
     width: 350px;
     height: 400px;
-    padding: 30px;
+    padding: 35px;
     margin: auto;
     text-align: center;
     vertical-align: center;
@@ -19,15 +19,19 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 
+    .form-field {
+      margin-bottom: 0;
+    }
+
     .submit-button {
       background-color: #088be9;
       color: white;
-      width: 288px;
-      margin: 5px 0 10px 0;
+      width: 280px;
+      margin: 15px 0 10px 0;
     }
 
     .bottom-content {
-      margin-top: 25px;
+      margin-top: 40px;
     }
   }
 }
