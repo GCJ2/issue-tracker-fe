@@ -1,12 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'semantic-ui-css/semantic.min.css'
 import App from './App';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, compose} from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import {BrowserRouter as Router} from 'react-router-dom';
+import reducer from "./reducers/reducers";
 import * as serviceWorker from './serviceWorker';
+
+const enhancer = compose(
+  applyMiddleware(
+    thunk,
+    logger
+  ),
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+);
+
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
