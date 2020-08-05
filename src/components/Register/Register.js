@@ -13,6 +13,7 @@ const Register = () => {
   });
 
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [errors, setErrors] = useState('');
 
   const handleChange = (e) => {
     const updatedUser = {...user, [e.target.name]: e.target.value};
@@ -21,12 +22,16 @@ const Register = () => {
 
   const handlePasswordConfirm = (e) => {
     setPasswordConfirm(e.target.value);
-    console.log('passwordConfirm:', passwordConfirm)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user)
+    console.log(user, 'passwordConfirm:', passwordConfirm);
+    if (user.password !== passwordConfirm) {
+      setErrors('Passwords must match')
+    } else {
+      console.log('Passwords match')
+    }
   };
 
 
@@ -35,7 +40,7 @@ const Register = () => {
       <div className='form-container'>
         <Header as='h1'>Register</Header>
         <div className='form'>
-          <Form onSubmit={handleSubmit}>
+          <Form error onSubmit={handleSubmit}>
             <Form.Field className='form-field'>
               <input type='text'
                      placeholder='Username'
@@ -75,6 +80,7 @@ const Register = () => {
           </Form>
         </div>
         <p>Back to <Link to='/'>Log In</Link></p>
+        {errors ? <p>Passwords must match!</p> : null}
       </div>
     </div>
   );
