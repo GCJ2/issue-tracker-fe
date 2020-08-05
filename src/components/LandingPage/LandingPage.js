@@ -1,24 +1,50 @@
 import React, {useState} from 'react';
 import {Button, Checkbox, Form, Header} from 'semantic-ui-react'
 import auth from '../../utils/authentication'
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import './LandingPage.scss'
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+
+  const history = useHistory();
 
   const [user, setUser] = useState({
     user_name: '',
     password: ''
   });
 
+  const [errors, setErrors] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
+
   const handleChange = (e) => {
+    setErrors('');
     const updatedUser = {...user, [e.target.name]: e.target.value};
     setUser(updatedUser);
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(user)
+  //   if (!user.user_name || !user.password) {
+  //     setErrors('Username and password are required.')
+  //   } else {
+  //     setLoggingIn(true);
+  //     auth.signIn(user)
+  //       .then(() => {
+  //         setLoggingIn(false);
+  //         history.push('/dashboard')
+  //       })
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.signIn(user)
+    console.log(user)
+      setLoggingIn(true);
+      auth.signIn(user)
+        .then(() => {
+          setLoggingIn(false);
+          history.push('/dashboard')
+        })
   };
 
   return (
@@ -47,6 +73,7 @@ const LandingPage = () => {
         <div className='bottom-content'>
           <p>Create an <Link to='register'>account </Link></p>
           <p>View Demo</p>
+          {errors ? <p className='error-message'>{errors}</p> : null}
         </div>
       </div>
     </div>
