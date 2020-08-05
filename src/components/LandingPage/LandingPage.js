@@ -22,30 +22,30 @@ const LandingPage = (props) => {
     setUser(updatedUser);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(user)
-  //   if (!user.user_name || !user.password) {
-  //     setErrors('Username and password are required.')
-  //   } else {
-  //     setLoggingIn(true);
-  //     auth.signIn(user)
-  //       .then(() => {
-  //         setLoggingIn(false);
-  //         history.push('/dashboard')
-  //       })
-  //   }
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user)
+    if (!user.user_name || !user.password) {
+      setErrors('Username and password are required.')
+    } else {
       setLoggingIn(true);
       auth.signIn(user)
         .then(() => {
           setLoggingIn(false);
           history.push('/dashboard')
         })
+    }
   };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(user)
+  //     setLoggingIn(true);
+  //     auth.signIn(user)
+  //       .then(() => {
+  //         setLoggingIn(false);
+  //         history.push('/dashboard')
+  //       })
+  // };
 
   return (
     <div className='main-view'>
