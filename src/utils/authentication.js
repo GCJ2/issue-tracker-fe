@@ -23,7 +23,7 @@ const auth = {
       }).catch(error => {
         console.log(error.response.data)
       })
-  }
+  },
 };
 
 export default auth

@@ -1,23 +1,23 @@
 import {
   FETCH_START,
-  FETCH_USER_SUCCESS,
+  FETCH_CURRENT_USER_SUCCESS,
   FETCH_USERS_SUCCESS,
   FETCH_ISSUE_SUCCESS,
   FETCH_ISSUES_SUCCESS,
   FETCH_COMMENT_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
 } from "../actions";
 
 const initialState = {
-  user: null,
+  currentUser: null,
   users: [],
   issue: null,
   issues: [],
   comment: null,
   comments: [],
   isFetching: false,
-  error: ''
+  error: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,50 +25,57 @@ const reducer = (state = initialState, action) => {
     case FETCH_START:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+      };
+    case FETCH_CURRENT_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        currentUser: action.payload,
       };
     case FETCH_USER_SUCCESS:
       return {
         ...state,
-        user: action.payload
+        isFetching: false,
+        user: action.payload,
       };
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        users: action.payload
+        users: action.payload,
       };
     case FETCH_ISSUE_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        issue: action.payload
+        issue: action.payload,
       };
     case FETCH_ISSUES_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        issues: action.payload
+        issues: action.payload,
       };
     case FETCH_COMMENT_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        comment: action.payload
+        comment: action.payload,
       };
     case FETCH_COMMENTS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        comments: action.payload
+        comments: action.payload,
       };
     case FETCH_FAILURE:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
       };
     default:
-      return state
+      return state;
   }
 };
 
