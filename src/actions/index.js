@@ -11,6 +11,18 @@ export const FETCH_COMMENT_SUCCESS = "FETCH_COMMENT_SUCCESS";
 export const FETCH_COMMENTS_SUCCESS = "FETCH_COMMENTS_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
+export const getCurrentUser = (id) => (dispatch) => {
+  dispatch({ type: FETCH_START });
+  axios
+    .get(`${baseURL}/users/${id}`)
+    .then((res) => {
+      dispatch({ type: FETCH_CURRENT_USER_SUCCESS, payload: res.data });
+    })
+    .catch((error) => {
+      dispatch({ type: FETCH_FAILURE, payload: error });
+    });
+};
+
 export const getUsers = () => (dispatch) => {
   dispatch({ type: FETCH_START });
   axios
